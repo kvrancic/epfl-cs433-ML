@@ -19,4 +19,8 @@ def compute_loss(y, tx, w):
     # INSERT YOUR CODE HERE
     # TODO: compute loss by MSE
     # ***************************************************
-    raise NotImplementedError
+    pred = tx @ w
+    e = y - pred 
+    mse = 0.5 * np.mean(e**2) # every element in diff will be squared before calculating the mean
+
+    return mse
