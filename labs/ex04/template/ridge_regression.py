@@ -27,4 +27,31 @@ def ridge_regression(y, tx, lambda_):
     # COPY YOUR CODE FROM EX03 HERE
     # ridge regression: TODO
     # ***************************************************
-    raise NotImplementedError
+    N = tx.shape[0]
+    D = tx.shape[1]
+    w = np.linalg.solve(tx.T @ tx + 2 * N * lambda_ * np.eye(D), tx.T @ y)
+
+    return w
+
+def compute_mse(y, tx, w):
+    """Calculate the loss using either MSE or MAE.
+
+    Args:
+        y: numpy array of shape=(N, )
+        tx: numpy array of shape=(N,2)
+        w: numpy array of shape=(2,). The vector of model parameters.
+
+    Returns:
+        the value of the loss (a scalar), corresponding to the input parameters w.
+    """
+    # ***************************************************
+    # INSERT YOUR CODE HERE
+    # TODO: compute loss by MSE
+    # ***************************************************
+
+    #  old solution: (1/(2 * y.shape[0])) * np.sum((y - prediction)**2)
+    pred = tx @ w
+    e = y - pred 
+    mse = 0.5 * np.mean(e**2) # every element in diff will be squared before calculating the mean
+
+    return mse

@@ -24,4 +24,8 @@ def build_poly(x, degree):
     # this function should return the matrix formed
     # by applying the polynomial basis to the input data
     # ***************************************************
-    raise NotImplementedError
+    poly = []
+    for i in range(degree + 1):
+        poly.append(x ** i)
+    
+    return np.column_stack(poly)
